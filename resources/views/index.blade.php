@@ -570,7 +570,10 @@
                     <!-- END ERROR AND SUCCESS MESSAGE -->
                     <!-- CONTACT FORM starts here, Go to contact.php and add your email ID, thats it.-->
 
-                    {!! Form::open(['route'=>'contactus.store', 'id'=>'form_submit']) !!}
+                    {{-- <form role="form" method="POST" action="" id="form_submit"> --}}
+                    
+                    {!! Form::open(['role' => 'form', 'method' => 'POST', 'id' => 'form_submit']) !!}
+                    
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
@@ -579,18 +582,18 @@
                             </div>
                              
                             <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-                                {!! Form::text('email', old('email'), ['class'=>'form-control', 'placeholder'=>'Enter Email']) !!}
+                                {!! Form::text('email', old('email'), ['class'=>'form-control', 'id'=>'email', 'placeholder'=>'Enter Email']) !!}
                                 <span class="text-danger">{{ $errors->first('email') }}</span>
                             </div>
 
-                            <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-                                {!! Form::text('email', old('email'), ['class'=>'form-control', 'placeholder'=>'Enter Email']) !!}
-                                <span class="text-danger">{{ $errors->first('email') }}</span>
+                            <div class="form-group {{ $errors->has('phone') ? 'has-error' : '' }}">
+                                {!! Form::text('phone', old('phone'), ['class'=>'form-control', 'id'=>'phone', 'placeholder'=>'Enter Phone']) !!}
+                                <span class="text-danger">{{ $errors->first('phone') }}</span>
                             </div>
 
-                            <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-                                {!! Form::text('email', old('email'), ['class'=>'form-control', 'placeholder'=>'Enter Email']) !!}
-                                <span class="text-danger">{{ $errors->first('email') }}</span>
+                            <div class="form-group {{ $errors->has('subject') ? 'has-error' : '' }}">
+                                {!! Form::text('subject', old('subject'), ['class'=>'form-control', 'id'=>'subject', 'placeholder'=>'Enter subject']) !!}
+                                <span class="text-danger">{{ $errors->first('subject') }}</span>
                             </div>
                         </div>
                         
@@ -606,8 +609,8 @@
                         </div>
                     </div>
                      
+                    {{--</form>  --}}
                     {!! Form::close() !!}
-
                     <!--<form role="form" method="POST" action="" id="form_submit">
                         <div class="row">
                             <div class="col-md-4">

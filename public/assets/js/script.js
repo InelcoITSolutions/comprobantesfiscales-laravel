@@ -202,12 +202,19 @@ $(document).ready(function() {
 	$(".video").fitVids();
 });
 
+//CSRF
+$(document).ready(function() {
+	"use strict";
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+});
 
 //CONTACT FORM VALIDATION
 $(document).ready(function() {
-
 	"use strict";
-
 	$("#form_submit").submit(function() {
 
 		"use strict";
@@ -256,7 +263,7 @@ $(document).ready(function() {
 		if (name && phone && emaild && message) {
 			$.ajax({
 				type: 'POST',
-				url: 'contact.php',
+				url: '/contact-us',
 				data: dataString,
 				cache: false,
 				success: function(data) {

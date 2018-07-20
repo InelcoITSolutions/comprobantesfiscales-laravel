@@ -15,7 +15,7 @@ class ContactUSController extends Controller
     */
    public function contactUS()
    {
-       return view('contactUS');
+       return view('index');
    }
 
    /**
@@ -25,14 +25,13 @@ class ContactUSController extends Controller
     */
    public function contactUSPost(Request $request)
    {
-       $this->validate($request, [
-        'name' => 'required',
-        'email' => 'required|email',
-        'message' => 'required'
-        ]);
-
-       //ContactUS::create($request->all());
-
-       return back()->with('success', 'Thanks for contacting us!');
+       // $this->validate($request, [
+       //  'name' => 'required',
+       //  'email' => 'required|email',
+       //  'message' => 'required'
+       //  ]);
+      ContactUS::create($request->all());
+      $input = request()->all();
+      return response()->json(['success'=>'ENVIADO CORRECTAMENTE.']);
    }
 }

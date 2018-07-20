@@ -13,7 +13,10 @@
 
 Route::get('/', function () {
     return view('index');
-});
+});	
 
-Route::get('contact-us', 'ContactUSController@contactUS');
-Route::post('contact-us', ['as'=>'contactus.store','uses'=>'ContactUSController@contactUSPost']);
+//Route::get('contact-us', 'ContactUSController@contactUS');
+//Route::post('contact-us', ['as'=>'contactus.store','uses'=>'ContactUSController@contactUSPost']);
+
+Route::get('contact-us', 'ContactUSController@contactUS') ;
+Route::post('contact-us',['as'=>'contactus.store','uses'=>'ContactUSController@contactUSPost']);

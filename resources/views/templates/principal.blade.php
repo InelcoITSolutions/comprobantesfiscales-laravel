@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('titulo-pagina')</title>
+    <meta name="_token" content="{{ csrf_token() }}" />
     <!-- META para SEO -->
     <meta content="@yield('meta-descripcion')" name="description">
     <meta content="@yield('meta-keywords')" name="keywords">
