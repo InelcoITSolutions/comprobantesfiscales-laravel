@@ -202,91 +202,89 @@ $(document).ready(function() {
 	$(".video").fitVids();
 });
 
-//CSRF
-$(document).ready(function() {
-	"use strict";
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-});
+// //CSRF
+// $(document).ready(function() {
+//     $.ajaxSetup({
+//         headers: {
+//             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//         }
+//     });
+// });
+// //CONTACT FORM VALIDATION
+// $(document).ready(function() {
+//     "use strict";
+//     $(".btn-submit").on("click", function() {
 
-//CONTACT FORM VALIDATION
-$(document).ready(function() {
-	"use strict";
-	$("#form_submit").submit(function() {
+//         "use strict";
 
-		"use strict";
+//         var name = $("#name").val();
+//         var emaild = $("#email").val();
+//         var phone = $("#phone").val();
+//         var subject = $("#subject").val();
+//         var message = $("#message").val();
+//         var testEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
 
-		var name = $("#name").val();
-		var emaild = $("#email").val();
-		var phone = $("#phone").val();
-		var subject = $("#subject").val();
-		var message = $("#message").val();
-		var testEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+//         var dataString = 'name=' + name + '&mail=' + emaild + '&phone=' + phone + '&subjectForm=' + subject + '&messageForm=' + message;
 
-		var dataString = 'name=' + name + '&mail=' + emaild + '&phone=' + phone + '&subjectForm=' + subject + '&messageForm=' + message;
+//         if (!name) {
+//             $(".form_error .name_error").addClass("show").removeClass("hide");
+//             return false;
+//         } else {
+//             $(".form_error .name_error").addClass("hide").removeClass("show");
+//         }
+//         if (!emaild) {
+//             $(".form_error .email_error").addClass("show").removeClass("hide");
+//             return false;
+//         } else {
+//             $(".form_error .email_error").addClass("hide").removeClass("show");
+//             if (testEmail.test(emaild)) {
+//                 $(".form_error .email_val_error").addClass("hide").removeClass("show");
+//             } else {
+//                 $(".form_error .email_val_error").addClass("show").removeClass("hide");
+//                 return false;
+//             }
+//         }
 
-		if (!name) {
-			$(".form_error .name_error").addClass("show").removeClass("hide");
-			return false;
-		} else {
-			$(".form_error .name_error").addClass("hide").removeClass("show");
-		}
-		if (!emaild) {
-			$(".form_error .email_error").addClass("show").removeClass("hide");
-			return false;
-		} else {
-			$(".form_error .email_error").addClass("hide").removeClass("show");
-			if (testEmail.test(emaild)) {
-				$(".form_error .email_val_error").addClass("hide").removeClass("show");
-			} else {
-				$(".form_error .email_val_error").addClass("show").removeClass("hide");
-				return false;
-			}
-		}
+//         if (!phone) {
+//             $(".form_error .phone_error").addClass("show").removeClass("hide");
+//             return false;
+//         } else {
+//             $(".form_error .phone_error").addClass("hide").removeClass("show");
+//         }
 
-		if (!phone) {
-			$(".form_error .phone_error").addClass("show").removeClass("hide");
-			return false;
-		} else {
-			$(".form_error .phone_error").addClass("hide").removeClass("show");
-		}
-
-		if (!message) {
-			$(".form_error .message_error").addClass("show").removeClass("hide");
-			return false;
-		} else {
-			$(".form_error .message_error").addClass("hide").removeClass("show");
-		}
-		if (name && phone && emaild && message) {
-			$.ajax({
-				type: 'POST',
-				url: '/contact-us',
-				data: dataString,
-				cache: false,
-				success: function(data) {
-					$(".Sucess").show();
-					$(".Sucess").fadeIn(2000);
-					$(".Sucess").html("<i class='fa fa-check'></i> ¡Gracias <b>" + name + "</b>! Nos pondremos en contacto en la brevedad posible.");
-					$("#Name").val("");
-					$("#Email").val("");
-					$("#Phone").val("");
-					$("#Subject").val("");
-					$("#Message").val("");
-					$(".form_error .name_error, .form_error .email_error, .form_error .email_val_error, .form_error .message_error").addClass("hide").removeClass("show");
-					$("#name").val("");
-					$("#email").val("");
-					$("#phone").val("");
-					$("#subject").val("");
-					$("#message").val("");
-				}
-			});
-		}
-		return false;
-	});
-});
+//         if (!message) {
+//             $(".form_error .message_error").addClass("show").removeClass("hide");
+//             return false;
+//         } else {
+//             $(".form_error .message_error").addClass("hide").removeClass("show");
+//         }
+//         if (name && phone && emaild && message) {
+//             $.ajax({
+//                 type: 'POST',
+//                 url: '',
+//                 data: dataString,
+//                 cache: false,
+//                 success: function(data) {
+//                     $(".Sucess").show();
+//                     $(".Sucess").fadeIn(2000);
+//                     $(".Sucess").html("<i class='fa fa-check'></i> ¡Gracias <b>" + name + "</b>! Nos pondremos en contacto en la brevedad posible.");
+//                     $("#Name").val("");
+//                     $("#Email").val("");
+//                     $("#Phone").val("");
+//                     $("#Subject").val("");
+//                     $("#Message").val("");
+//                     $(".form_error .name_error, .form_error .email_error, .form_error .email_val_error, .form_error .message_error").addClass("hide").removeClass("show");
+//                     $("#name").val("");
+//                     $("#email").val("");
+//                     $("#phone").val("");
+//                     $("#subject").val("");
+//                     $("#message").val("");
+//                 }
+//             });
+//         }
+//         return false;
+//     });
+// });
 
 
 /// SMOOTH SCROLL           

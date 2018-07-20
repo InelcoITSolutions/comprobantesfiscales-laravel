@@ -454,7 +454,7 @@
     <div class="call_to_action">
         <div class="container">
             <div class="row wow bounceIn" data-wow-duration="0.7s">
-                <div class="col-md-12 text-center">
+{{--                 <div class="col-md-12 text-center">
                     <p>
                         ¿Cuándo aplica el complemento de pagos?
                     </p>
@@ -468,6 +468,17 @@
                         <li><i class="fa fa-check" aria-hidden="true"></i> Cuando el pago se haga en parcialidades.</li>
                         <li><i class="fa fa-check" aria-hidden="true"></i> Cuando la factura se emita a crédito.</li>
                     </ul>
+                    <hr>
+                </div> --}}
+
+                <div class="col-md-12 text-center">
+                    <p>
+                        ¿Aún conoces la correcta operación y las consideraciones para la emisión del <br><span>Complemento de Recepción de Pagos</span>?
+                    </p>
+                    <p>
+                        ¡Asiste a nuestro curso presencial!
+                    </p>
+                    <a class="btn btn-primary btn-video" href="https://www.inelco.mx/curso/recepcion_de_pagos_aspel" role="button" target="_blank">ASISTIR AL CURSO</a>
                 </div>
             </div>
         </div>
@@ -562,54 +573,83 @@
                     <div class="form_error text-center">
                         <div class="name_error hide error">Por favor ingresa un nombre.</div>
                         <div class="email_error hide error">Por favor ingresa un correo eléctronico.</div>
-                        <div class="email_val_error hide error">Por favor ingresa un e-mail válido.</div>
+                        <div class="email_val_error hide error">Por favor ingresa un correo eléctronico válido.</div>
                         <div class="phone_error hide error">Por favor ingresa un número telefónico.</div>
+                        <div class="phone_val_error hide error">Por favor ingresa un número telefónico válido a 10 digitos, sin espacios ni caracteres especiales.</div>
                         <div class="message_error hide error">Por favor ingresa un mensaje.</div>
                     </div>
                     <div class="Sucess"></div>
                     <!-- END ERROR AND SUCCESS MESSAGE -->
                     <!-- CONTACT FORM starts here, Go to contact.php and add your email ID, thats it.-->
+                    {!! Form::open(['route' => 'contactus.store', 'role' => 'form', 'method' => 'POST', 
+                    'id' => 'form_submit']) !!}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
+                                            {!! Form::text('name', old('name'), ['class'=>'form-control', 'id'=>'name', 'placeholder'=>'Nombre:']) !!}
+                                            <span class="text-danger">{{ $errors->first('name') }}</span>
+                                        </div>
+                                        
+                                    </div>
+                                    {{-- VIERNES 20 DE JULIO - 16:00 | CAMPO PENDIENTE EN JS, MODELO, CONTROLADOR Y BD --}}
+                                    <div class="col-md-6">
+                                        <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
+                                            {!! Form::text('name', old('name'), ['class'=>'form-control', 'id'=>'name', 'placeholder'=>'Apellido:']) !!}
+                                            <span class="text-danger">{{ $errors->first('name') }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group {{ $errors->has('phone') ? 'has-error' : '' }}">
+                                            {!! Form::text('phone', old('phone'), ['class'=>'form-control', 'id'=>'phone', 'placeholder'=>'Teléfono:']) !!}
+                                            <span class="text-danger">{{ $errors->first('phone') }}</span>
+                                        </div>
+                                    </div>
 
-                    {{-- <form role="form" method="POST" action="" id="form_submit"> --}}
-                    
-                    {!! Form::open(['role' => 'form', 'method' => 'POST', 'id' => 'form_submit']) !!}
-                    
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                                {!! Form::text('name', old('name'), ['class'=>'form-control', 'id'=>'name', 'placeholder'=>'Enter Name']) !!}
-                                <span class="text-danger">{{ $errors->first('name') }}</span>
+                                    {{-- VIERNES 20 DE JULIO - 16:00 | CAMPO PENDIENTE EN JS,MODELO, CONTROLADOR Y BD --}}
+                                    <div class="col-md-6">
+                                        <div class="form-group {{ $errors->has('phone') ? 'has-error' : '' }}">
+                                            {!! Form::text('phone', old('phone'), ['class'=>'form-control', 'id'=>'phone', 'placeholder'=>'Extensión:']) !!}
+                                            <span class="text-danger">{{ $errors->first('phone') }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
+                                            {!! Form::text('email', old('email'), ['class'=>'form-control', 'id'=>'email', 'placeholder'=>'Correo electrónico:']) !!}
+                                            <span class="text-danger">{{ $errors->first('email') }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group {{ $errors->has('subject') ? 'has-error' : '' }}">
+                                            {!! Form::text('subject', old('subject'), ['class'=>'form-control', 'id'=>'subject', 'placeholder'=>'Asunto: ']) !!}
+                                            <span class="text-danger">{{ $errors->first('subject') }}</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                             
-                            <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-                                {!! Form::text('email', old('email'), ['class'=>'form-control', 'id'=>'email', 'placeholder'=>'Enter Email']) !!}
-                                <span class="text-danger">{{ $errors->first('email') }}</span>
-                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group {{ $errors->has('message') ? 'has-error' : '' }}">
+                                    {!! Form::textarea('message', old('message'), ['class'=>'form-control', 'id'=>'message', 'placeholder'=>'Mensaje:']) !!}
+                                    <span class="text-danger">{{ $errors->first('message') }}</span>
+                                </div>
+                                
 
-                            <div class="form-group {{ $errors->has('phone') ? 'has-error' : '' }}">
-                                {!! Form::text('phone', old('phone'), ['class'=>'form-control', 'id'=>'phone', 'placeholder'=>'Enter Phone']) !!}
-                                <span class="text-danger">{{ $errors->first('phone') }}</span>
-                            </div>
-
-                            <div class="form-group {{ $errors->has('subject') ? 'has-error' : '' }}">
-                                {!! Form::text('subject', old('subject'), ['class'=>'form-control', 'id'=>'subject', 'placeholder'=>'Enter subject']) !!}
-                                <span class="text-danger">{{ $errors->first('subject') }}</span>
                             </div>
                         </div>
-                        
-                        <div class="col-md-8">
-                            <div class="form-group {{ $errors->has('message') ? 'has-error' : '' }}">
-                                {!! Form::textarea('message', old('message'), ['class'=>'form-control', 'id'=>'message', 'placeholder'=>'Enter Message']) !!}
-                                <span class="text-danger">{{ $errors->first('message') }}</span>
-                            </div>
-                            
-                            <div class="form-group">
-                                <button class="btn-submit">Contact US!</button>
+                        <div class="row">
+                            <div class="col-md-4 col-md-offset-4">
+                                <div class="form-group ">
+                                    <button class="btn-submit ">ENVIAR MENSAJE</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                     
-                    {{--</form>  --}}
                     {!! Form::close() !!}
                     <!--<form role="form" method="POST" action="" id="form_submit">
                         <div class="row">
@@ -648,7 +688,7 @@
             </div>
         </div>
         <div class="section_grey">
-            <div class="container wow bounceIn">
+            <div class="container wow fadeInRight" data-wow-duration="2s">
                 <div class="section_title">
                     <h2 class="h2-css">Oficina en Monterrey</h2>
                 </div>
@@ -697,4 +737,91 @@
 @push('agregar-script')
     {{-- AGREGA CONTENIDO JavaScript EXCLUSIVOS DE ESTÁ SECCIÓN --}}
     {{-- Por ahora no hay ningún js extra --}}
+    <script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+
+    $(".btn-submit").click(function(e){
+
+        e.preventDefault();
+
+        var name = $("#name").val();
+        var emaild = $("#email").val();
+        var phone = $("#phone").val(); 
+        var subject = $("#subject").val();
+        var message = $("#message").val();
+        var testEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+        var testPhone = /^[0-9]{10}/gm
+
+        var dataString = '&name=' + name + '&email=' + emaild + '&phone=' + phone  + '&subject=' + subject + '&message=' + message;
+
+        if (!name) {
+            $(".form_error .name_error").addClass("show").removeClass("hide");
+            return false;
+        } else {
+            $(".form_error .name_error").addClass("hide").removeClass("show");
+        }
+        if (!emaild) {
+            $(".form_error .email_error").addClass("show").removeClass("hide");
+            return false;
+        } else {
+            $(".form_error .email_error").addClass("hide").removeClass("show");
+            if (testEmail.test(emaild)) {
+                $(".form_error .email_val_error").addClass("hide").removeClass("show");
+            } else {
+                $(".form_error .email_val_error").addClass("show").removeClass("hide");
+                return false;
+            }
+        }
+        if (!phone) {
+             $(".form_error .phone_error").addClass("show").removeClass("hide");
+             return false;
+         } else {
+            $(".form_error .phone_error").addClass("hide").removeClass("show");
+            if (testPhone.test(emaild)) {
+                $(".form_error .phone_val_error").addClass("hide").removeClass("show");
+            } else {
+                $(".form_error .phone_val_error").addClass("show").removeClass("hide");
+                return false;
+            }
+        }
+        if (!message) {
+            $(".form_error .message_error").addClass("show").removeClass("hide");
+            return false;
+        } else {
+            $(".form_error .message_error").addClass("hide").removeClass("show");
+        }
+        if (name && emaild && message) {
+            $.ajax({
+                type: 'POST',
+                url: "{{ url('/contact-us') }}",
+                data: dataString,
+                cache: false,
+                //success: function(data) { alert("success") },
+                //error: function(ts) { alert(ts.responseText) }
+                success: function(data) {
+                    $(".Sucess").show();
+                    $(".Sucess").fadeIn(2000);
+                    $(".Sucess").html("<i class='fa fa-check'></i> ¡Gracias <b>" + name + "</b>! Nos pondremos en contacto en la brevedad posible.");
+                    $('.Sucess').fadeOut(10000,function(){$(this).remove();});
+                    $("#Name").val("");
+                    $("#Email").val("");
+                    $("#Phone").val("");
+                    $("#Subject").val("");
+                    $("#Message").val("");
+                    $(".form_error .name_error, .form_error .email_error, .form_error .email_val_error, .form_error .message_error").addClass("hide").removeClass("show");
+                    $("#name").val("");
+                    $("#email").val("");
+                    $("#phone").val("");
+                    $("#subject").val("");
+                    $("#message").val("");
+                }
+            });
+        }
+        return false;
+    });
+    </script>
 @endpush

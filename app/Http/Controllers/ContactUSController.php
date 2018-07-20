@@ -32,6 +32,6 @@ class ContactUSController extends Controller
        //  ]);
       ContactUS::create($request->all());
       $input = request()->all();
-      return response()->json(['success'=>'ENVIADO CORRECTAMENTE.']);
+      return response()->json(['success'=>'Mensaje enviado correctamente.']);
    }
 }

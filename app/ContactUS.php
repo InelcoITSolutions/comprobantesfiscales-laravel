@@ -9,6 +9,6 @@ class ContactUS extends Model
  
 public $table = 'contact_us';
  
-public $fillable = ['name','email','message'];
+protected $fillable  = ['name', 'phone', 'email', 'subject', 'message'];
  
 }
