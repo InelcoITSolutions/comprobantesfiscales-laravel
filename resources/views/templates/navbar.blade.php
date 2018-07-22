@@ -1,7 +1,7 @@
 <!-- NAVBAR  -->
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
+        <!-- Agrupación para mejor UX mobile -->
         <div class="navbar-header">
             <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" type="button">
                 <span class="sr-only">Toggle navigation</span>
@@ -17,13 +17,14 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <!-- NAV -->
-                <li><a href="#HOME">INICIO</a></li>
-                <li><a href="#CAMBIOS">CAMBIOS</a></li>
-                <li><a href="#PAGOS">MÉTODOS Y FORMAS</a></li>
-                <li><a href="#CATALOGOS">CATÁLOGOS</a></li>
-                <li><a href="#VALIDACION">VALIDACIÓN RFC</a></li>
-                <li><a href="#SOLUCIONES">SOLUCIONES</a></li>
-                <li><a href="#CONTACTO">CONTÁCTANOS</a></li>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#cambios">Cambios</a></li>
+                <li><a href="#pagos">Métodos y Formas</a></li>
+                <li><a href="#catalogos">Catálogos</a></li>
+                <li><a href="#validacion">Validación RFC</a></li>
+                <li><a href="#soluciones">Soluciones</a></li>
+                {{-- <li><a href="https://www.inelco.mx/calendario" target="_blank">Calendario</a></li> --}}
+                <li><a href="#contacto">Contáctanos</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container- -->

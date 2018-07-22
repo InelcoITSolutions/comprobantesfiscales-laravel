@@ -1189,7 +1189,7 @@ div.carousel-inner .item img {
     /* float in bottom right corner */
     /* 20 pixels from edge */
     position: fixed;
-    right: 20px;
+    left: 20px;
     bottom: 20px;
     /* size of button is 50 pixels*/
     width: 60px;

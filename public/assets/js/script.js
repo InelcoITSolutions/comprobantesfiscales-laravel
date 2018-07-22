@@ -347,3 +347,19 @@ $('a.scroll-top').click(function() {
     }, 700);
     return false;
 });
+
+//Zoho
+var $zoho = $zoho || {};
+$zoho.salesiq = $zoho.salesiq || {
+	 widgetcode: "2aefbc92747230646ca3ea4f588023830f09f7fc599ad0e2b054399bad7b2f89831224c114f5be1595c1aed0e0eff2ac", 
+	 values: {}, ready: function() {} 
+};
+var d = document;
+s = d.createElement("script");
+s.type = "text/javascript";
+s.id = "zsiqscript";
+s.defer = true;
+s.src = "https://salesiq.zoho.com/widget";
+t = d.getElementsByTagName("script")[0];
+t.parentNode.insertBefore(s, t);
+d.write("<div id='zsiqwidget'></div>");
