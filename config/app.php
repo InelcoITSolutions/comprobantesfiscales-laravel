@@ -150,7 +150,6 @@ return [
         /*
          * Package Service Providers...
          */
-
         /*
          * Application Service Providers...
          */
@@ -162,6 +161,8 @@ return [
 
         //AGREGADOS
         Collective\Html\HtmlServiceProvider::class,
+        Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
 
     ],
 
@@ -214,6 +215,8 @@ return [
         //AGREGADOS
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Recaptcha' => Greggilbert\Recaptcha\Facades\Recaptcha::class,
+        'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
     ],
 
 ];

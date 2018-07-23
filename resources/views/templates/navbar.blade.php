@@ -10,10 +10,10 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">
-                <img src="assets/imagenes/logos/logo-brand.png" alt="">
+                <img src="assets/imagenes/logos/logo-brand.png" alt="Logotipo en navbar.">
             </a>
         </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- NAVBAR Links -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <!-- NAV -->
@@ -26,7 +26,7 @@
                 {{-- <li><a href="https://www.inelco.mx/calendario" target="_blank">Calendario</a></li> --}}
                 <li><a href="#contacto">Contáctanos</a></li>
             </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container- -->
+        </div><!-- termina collapse -->
+    </div><!-- termina cotainer- -->
 </nav>
-<!-- END navbar -->
+<!-- F I N | navbar -->

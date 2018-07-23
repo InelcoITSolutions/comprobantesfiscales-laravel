@@ -7,12 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('titulo-pagina')</title>
     <meta name="_token" content="{{ csrf_token() }}" />
-    <!-- META para SEO -->
+    {{-- META para SEO --}}
     <meta content="@yield('meta-descripcion')" name="description">
     <meta content="@yield('meta-keywords')" name="keywords">
     <meta content="Inelco IT Solutions S.A. de C.V." name="author">
     <meta content="Index, Follow" name="robots">
-    <!-- META para Social Media -->
+    <link rel="canonical" href="https://www.comprobantesfiscales.org/" />
+    {{-- META para Social Media --}}
     <meta property="og:url" content="https://@yield('fb-url')">
     <meta property="og:type" content="website">
     <meta property="og:title" content="@yield('fb-titulo')">
@@ -20,36 +21,42 @@
     <meta property="og:image" content="http://@yield('fb-img')">
     <meta property="og:image:secure_url" content="https://@yield('fb-img')">
     <link href="https://@yield('fb-img')" rel="image_src">
-    <!-- Favicon -->
+    {{-- Script Google Analitycs, necesario que cargue primero y este en <HEAD></HEAD> --}}
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-97845785-2"></script>
+    <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-97845785-2');
+    </script>
+
+    {{-- Favicon --}}
     <link href="{{ asset('/assets/imagenes/icon/favicon.jpg') }}" rel="shortcut icon" type="image/x-icon">
     <link href="{{ asset('/assets/imagenes/icon/favicon.jpg') }}" rel="icon" type="image/jpg" >
-    <!-- =========================
+    {{-- =========================
             FUENTES 
-    ============================== -->
+    ============================== --}}
     <link href='https://fonts.googleapis.com/css?family=Raleway:500,600,700,800,900,400,300' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900,300italic,400italic' rel='stylesheet' type='text/css'>
     @stack('agregar-fonts')
-    <!-- =========================
+    {{-- =========================
             CSS 
-    ============================== -->
-    <!-- Bootstrap -->
+    ============================== --}}
+    {{-- Bootstrap --}}
     <link href="{{ asset('/assets/css/bootstrap.min.css') }}" rel="stylesheet">
-    <!-- Owl Carousel Assets -->
+    {{-- Owl Carousel Assets --}}
     <link href="{{ asset('/assets/css/owl.carousel.css') }}" rel="stylesheet">
     <link href="{{ asset('/assets/css/owl.theme.css') }}" rel="stylesheet">
-    <!-- Pixeden Icon Font -->
+    {{-- Pixeden Icon Font --}}
     <link href="{{ asset('/assets/css/Pe-icon-7-stroke.css') }}" rel="stylesheet">
-    <!-- Font Awesome -->
+    {{-- Font Awesome --}}
     <link href="{{ asset('/assets/css/font-awesome.min.css') }}" rel="stylesheet">
-    <!-- PrettyPhoto -->
+    {{-- PrettyPhoto --}}
     <link href="{{ asset('/assets/css/prettyPhoto.css') }}" rel="stylesheet">
-    <!-- Style -->
+    {{-- Style --}}
     <link href="{{ asset('/assets/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('/assets/css/animate.css') }}" rel="stylesheet">
-    <!-- Responsive CSS -->
+    {{-- Responsive CSS --}}
     <link href="{{ asset('/assets/css/responsive.css') }}" rel="stylesheet">
     @stack('agregar-css')
     
+    {{-- FUNCIONAMIENTO EN IE | Debe estar comentado en HTML para funcionar --}}
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -59,7 +66,7 @@
 </head>
 
 <body>
-    <!-- PRELOADER -->
+    {{-- PRELOADER --}}
     <div class="spn_hol">
         <div class="spinner">
             <div class="bounce1"></div>
@@ -67,25 +74,25 @@
             <div class="bounce3"></div>
         </div>
     </div>
-    <!-- END PRELOADER -->
+    {{-- END PRELOADER --}}
 
     @include('templates.navbar')
 
     @yield('contenido')
 
-    <!-- =========================
+    {{-- =========================
         SCROLL BUTTON 
-    ============================== -->
+    ============================== --}}
     <a href="#" class="scroll-top">
         <i class="fa fa-angle-up"></i>
     </a>
-    <!-- END SCROLL -->
+    {{-- END SCROLL --}}
 
     @include('templates.footer')
 
-    <!-- =========================
+    {{-- =========================
          SCRIPTS 
-    ============================== -->
+    ============================== --}}
     <script src="{{ asset('/assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('/assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('/assets/js/owl.carousel.js') }}"></script>

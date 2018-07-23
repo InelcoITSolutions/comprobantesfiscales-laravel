@@ -91,8 +91,8 @@
                             <h3>
                                 <span>
                                 <i class="fa fa-credit-card fa-2x" aria-hidden="true"></i>
-                              </span>
-                              </h3>
+                                </span>
+                            </h3>
                         </div>
                         <h3 class="pad-bt15">Formas de pago</h3>
                         <p class="text-center">En la nueva versión se invierten los datos que deben ir en “Método de pago” y en “Forma de pago”, como se señala a continuación.</p>
@@ -103,9 +103,9 @@
                         <div class="service-item">
                             <h3>
                                 <span>
-                                <i class="fa fa-book fa-2x" aria-hidden="true"></i>
-                              </span>
-                              </h3>
+                                    <i class="fa fa-book fa-2x" aria-hidden="true"></i>
+                                </span>
+                            </h3>
                         </div>
                         <h3 class="pad-bt15">Nuevos catálogos</h3>
                         <p class="text-center">Se incorporan 17 nuevos catálogos:
@@ -117,9 +117,9 @@
                         <div class="service-item">
                             <h3>
                                 <span>
-                                <i class="fa fa-check-circle fa-2x" aria-hidden="true"></i>
-                              </span>
-                              </h3>
+                                    <i class="fa fa-check-circle fa-2x" aria-hidden="true"></i>
+                                </span>
+                            </h3>
                         </div>
                         <h3 class="pad-bt15">Validación del RFC</h3>
                         <p class="text-center">Se validará que todos los RFC receptores se encuentren registrados ante el SAT a partir de un listado que ofrece la Autoridad.</p>
@@ -130,9 +130,9 @@
                         <div class="service-item">
                             <h3>
                                 <span>
-                                <i class="fa fa-clock-o fa-2x" aria-hidden="true"></i>
-                              </span>
-                              </h3>
+                                    <i class="fa fa-clock-o fa-2x" aria-hidden="true"></i>
+                                </span>
+                            </h3>
                         </div>
                         <h3 class="pad-bt15">Zonas Horarias</h3>
                         <p>En las nuevas Facturas Electrónicas se hará uso de zonas horarias las cuales estarán basadas en el Código Postal.</p>
@@ -591,6 +591,7 @@
                     <div class="email_error hide error">Por favor ingresa un correo eléctronico.</div>
                     <div class="email_val_error hide error">Por favor ingresa un correo eléctronico válido.</div>
                     <div class="message_error hide error">Por favor ingresa un mensaje.</div>
+                    <div class="recaptcha_error hide error">Por favor marque el checkbox reCAPTCHA.</div>
                 </div>
                 <div class="Sucess"></div>
                 <!-- Mensajes de error y envió correcto | F I N  -->
@@ -650,6 +651,14 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4 col-md-offset-4">
+                        <div class="form-group re-captcha">
+                            {!! Recaptcha::render() !!}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4">
                         <div class="form-group ">
                             <button class="btn-submit ">ENVIAR MENSAJE</button>
                         </div>
@@ -707,7 +716,7 @@
                     </p>
                     <p class="title-info"><i class="fa fa-phone" aria-hidden="true"></i> Teléfono: </p>
                     <p>
-                        <a href="tel:524442119009">(81) 1352 2222</a>
+                        <a href="tel:528113522020">(81) 1352 2222</a>
                     </p>
                 </div>
                 <div class="col-md-8">
@@ -768,7 +777,7 @@
             var testPhone = /^[0-9]{10}$/gm;
             var testExt = /^[0-9]{0,6}$/gm;
 
-            var dataString = '&name=' + name + '&lastname=' + lastname + '&phone=' + phone + '&ext=' + ext + '&email=' + email + '&subject=' + subject + '&message=' + message;
+            var dataString = '&name=' + name + '&lastname=' + lastname + '&phone=' + phone + '&ext=' + ext + '&email=' + email + '&subject=' + subject + '&message=' + message + '&g-recaptcha-response=' + grecaptcha.getResponse();
 
             if (!name) {
                 $(".form_error .name_error").addClass("show").removeClass("hide");
@@ -823,27 +832,38 @@
             } else {
                 $(".form_error .message_error").addClass("hide").removeClass("show");
             }
-            if (name && lastname && phone && email && message) {
+
+            if(grecaptcha && grecaptcha.getResponse().length > 0)
+            {   
+                var re_captcha = true;
+                $(".form_error .recaptcha_error").addClass("hide").removeClass("show");
+            }
+            else
+            {   
+                var re_captcha = false;
+                $(".form_error .recaptcha_error").addClass("show").removeClass("hide");
+            }
+            if (name && lastname && phone && email && message && re_captcha) {
                 $.ajax({
                     type: 'POST',
                     url: "{{ url('/contact-us') }}",
                     data: dataString,
                     cache: false,
                     {{-- Valida envió de info por ajax --}}
-                    {{-- success: function(data) { alert("success") }, --}}
-                    {{-- error: function(ts) { alert(ts.responseText) }  --}}
-                    success: function(data) {
+                    {{-- success: function(data) { alert("success") },
+                    error: function(ts) { alert(ts.responseText) } --}}
+                     success: function(data) {
                         $(".Sucess").show();
                         $(".Sucess").fadeIn(2000);
                         $(".Sucess").html("<i class='fa fa-check'></i> ¡Gracias <b>" + name + " " + lastname + "</b>! Nos pondremos en contacto en la brevedad posible.");
-                        $('.Sucess').fadeOut(8000,function(){$(this).remove();});
+                        $('.Sucess').fadeOut(9000,function(){$(this).remove();});
                         {{-- Desconozco el uso de estos ID --}}
-                        {{-- $("#Name").val("");
+                         {{-- $("#Name").val("");
                          $("#Email").val("");
                          $("#Phone").val("");
                          $("#Subject").val("");
                          $("#Message").val("");--}}
-                        $(".form_error .name_error, .form_error .lastname_error, .form_error .phone_error, .form_error .ext_error, .form_error .email_error, .form_error .email_val_error, .form_error .message_error").addClass("hide").removeClass("show");
+                        $(".form_error .name_error, .form_error .lastname_error, .form_error .phone_error, .form_error .ext_error, .form_error .email_error, .form_error .email_val_error, .form_error .message_error, .form_error .recaptcha_error").addClass("hide").removeClass("show");
                         $("#name").val("");
                         $("#lastname").val("");
                         $("#phone").val("");
