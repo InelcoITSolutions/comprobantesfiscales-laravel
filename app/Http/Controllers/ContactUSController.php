@@ -38,8 +38,6 @@ class ContactUSController extends Controller
 			 ]);
 
 			 $this->recibido=$request;
-			 //INSERT EN BD
-			ContactUS::create($request->all());
 			 //Notificación al usuario			
 			Mail::send('contact.email', 
 				['nombrec' => $this->recibido->name.' '.$this->recibido->lastname,
@@ -55,6 +53,8 @@ class ContactUSController extends Controller
 	            $message->to($this->recibido->email, $this->recibido->name.' '.$this->recibido->lastname);
 	            $message->cc('contacto@comprobantesfiscales.org');
 			});
+			$emails = ['luis.carrillo@inelco.com.mx', 'contacto@inelco.com.mx','javier.jasso@inelco.com.mx', 'pedro.cabrero@inelco.com.mx'];
+			//$emails = ['luis.carrillo@inelco.com.mx', 'luiz054@outlook.com'];
 			 //Notificación a empresa			
 			Mail::send('contact.notificacion', 
 				['nombre' => $this->recibido->name, 
@@ -64,15 +64,17 @@ class ContactUSController extends Controller
 				'asunto' => $this->recibido->subject, 
 				'email' => $this->recibido->email,
 				'mensaje' => $this->recibido->message],
-				function ($message) {
+				function ($message) use($emails) {
 					//remitente
 	            $message->from($this->recibido->email, $this->recibido->name.' '.$this->recibido->lastname);
 	            //asunto
 	            $message->subject('Envió de mensaje desde ComprobantesFiscales.org por parte de: ' . $this->recibido->name.' '.$this->recibido->lastname);
 	            //receptor
-	            $message->to('luis.carrillo@inelco.com.mx');
+	            $message->to($emails);
 	            $message->cc('contacto@comprobantesfiscales.org');
 			});
+			 //INSERT EN BD
+			ContactUS::create($request->all());
 			$input = request()->all();
 			return response()->json(['success'=>'Mensaje enviado correctamente.']);
 	 }

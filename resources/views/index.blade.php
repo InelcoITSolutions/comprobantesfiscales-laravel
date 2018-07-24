@@ -850,7 +850,7 @@
                     data: dataString,
                     cache: false,
                     {{-- Valida envió de info por ajax --}}
-                    {{-- success: function(data) { alert("success") },
+                     {{--success: function(data) { alert("success") },
                     error: function(ts) { alert(ts.responseText) } --}}
                      success: function(data) {
                         $(".Sucess").show();
